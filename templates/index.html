@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATION V16.3</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <h1>STATION V16.3</h1>
+        <p>Cybersecurity Utility Dashboard</p>
+        <form method="POST">
+            <textarea name="data" placeholder="Enter data..." required></textarea>
+            <input name="salt" placeholder="Optional salt">
+            <select name="algo">
+                <option value="sha256">SHA-256</option>
+                <option value="sha3_256">SHA3-256</option>
+                <option value="blake2b">BLAKE2b</option>
+                <option value="md5">MD5</option>
+            </select>
+            <select name="mode">
+                <option value="crypto">CRYPTO</option>
+                <option value="base">BASE64</option>
+                <option value="enhancer">ENHANCER</option>
+                <option value="strength">STRENGTH</option>
+                <option value="identify">IDENTIFY</option>
+            </select>
+            <button type="submit">Process</button>
+        </form>
+        {% if result %}
+        <section class="result"><h2>Result</h2><pre>{{ result }}</pre></section>
+        {% endif %}
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
